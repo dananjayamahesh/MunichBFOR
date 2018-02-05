@@ -77,6 +77,8 @@ Avaible test functions (in SwarmPackagePy.testFunctions)
 from SwarmPackagePy.aba import aba
 from SwarmPackagePy.ba import ba
 from SwarmPackagePy.bfo import bfo
+from SwarmPackagePy.bfo_with_swarm import bfo_with_swarm
+from SwarmPackagePy.bfo_with_env_swarm import bfo_with_env_swarm
 from SwarmPackagePy.chso import chso
 from SwarmPackagePy.cso import cso
 from SwarmPackagePy.fa import fa
