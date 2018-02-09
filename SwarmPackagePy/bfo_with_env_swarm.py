@@ -6,7 +6,7 @@ from . import intelligence
 
 class bfo_with_env_swarm(intelligence.sw):
     """
-    Bacteria Foraging Optimization with Swarming Effect
+    Bacteria Foraging Optimization with Swarming Effect with Environment Neutrient Gradient
     """
 
     def __init__(self, n, function, lb, ub, dimension, iteration,
@@ -39,7 +39,7 @@ class bfo_with_env_swarm(intelligence.sw):
             n_is_even = False
 
         J = np.array([function(x) for x in self.__agents])
-        print(J.shape)
+        
         print(J)
         Pbest = self.__agents[J.argmin()]
         Gbest = Pbest
