@@ -78,6 +78,7 @@ from SwarmPackagePy.aba import aba
 from SwarmPackagePy.ba import ba
 from SwarmPackagePy.bfo import bfo
 from SwarmPackagePy.classic_bfo import classic_bfo
+from SwarmPackagePy.bfoa import bfoa
 from SwarmPackagePy.abfo1 import abfo1
 from SwarmPackagePy.abfo2 import abfo2
 from SwarmPackagePy.bfo_with_swarm import bfo_with_swarm
