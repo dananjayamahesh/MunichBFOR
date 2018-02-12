@@ -66,6 +66,7 @@ class bfoa(intelligence.sw):
 
                 for j in range(Nc):
 
+                    #In purpose of monitoring
                     self._points(self.__agents)
 
                     for i in range(n):

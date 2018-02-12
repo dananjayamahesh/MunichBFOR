@@ -85,3 +85,7 @@ def multiple_gaussian_function(x):
 
 def thriple_gaussian_function(x):
     return -((np.exp(-4 * np.log(2) * ((x[0] - (-4))**2 + (x[1] - (-4))**2) / 5**2)) + (np.exp(-4 * np.log(2) * ((x[0] - 0)**2 + (x[1] - 0)**2) / 4**2))  +  (np.exp(-4 * np.log(2) * ((x[0] - 5)**2 + (x[1] - 5)**2) / 6**2)) )
+
+
+def thriple_wide_gaussian_function(x):
+    return -((np.exp(-4 * np.log(2) * ((x[0] - (-20))**2 + (x[1] - (-20))**2) / 20**2)) + (np.exp(-4 * np.log(2) * ((x[0] - 0)**2 + (x[1] - 0)**2) / 15**2))  +  (np.exp(-4 * np.log(2) * ((x[0] - 20)**2 + (x[1] - 20)**2) / 25**2)) )
