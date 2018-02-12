@@ -35,7 +35,7 @@ For all questions and suggestions contact us at swarm.team.dev@gmail.com. For mo
 * [Adaptive Bacterial Foraging Optimization2](#adaptive-bacterial-foraging-optimization2)<br>
 * [Bacterial Foraging Optimization with Environment Independent Swarming](#swarm1-bacterial-foraging-optimization2)<br>
 * [Bacterial Foraging Optimization with Environment Dependent Swarming](#swarm2-bacterial-foraging-optimization2)<br>
-* [Adaptive Bacterial Foraging Optimization with Environment Independent Swarming](#adaptive 1-swarm1-bacterial-foraging-optimization2)<br>
+* [Adaptive Bacterial Foraging Optimization with Environment Independent Swarming](#adaptive1-swarm1-bacterial-foraging-optimization2)<br>
 * [Adaptive Bacterial Foraging Optimization with Environment Dependent Swarming](#swarm2-bacterial-foraging-optimization2)<br>
 * [Adaptive Bacterial Foraging Optimization with Environment Independent Swarming](#adaptive2-swarm1-bacterial-foraging-optimization2)<br>
 * [Adaptive Bacterial Foraging Optimization with Environment Dependent Swarming](#adaptive2-swarm1-bacterial-foraging-optimization2)<br>
