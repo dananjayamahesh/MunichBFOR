@@ -54,6 +54,10 @@ class abfoa2(intelligence.sw):
         #Gbest = Pbest
         C_a = [C for i in range(n)]
 
+        self.__Steps = []
+        self.__JList = []
+        #self.__Steps.append()
+
         for l in range(Ned):
             for k in range(Nre):
                 J_chem = [J[::1]]
@@ -70,11 +74,11 @@ class abfoa2(intelligence.sw):
                 for j in range(Nc):
 
                     self._points(self.__agents)
-                    print('Data')
-                    print(self.__agents)
-                    print(C_a)
-                    print(J)
-                    print(J_best)
+                    #print('Data')
+                    #print(self.__agents)
+                    #print(C_a)
+                    #print(J)
+                    #print(J_best)
                     #print(self.__agents[2])
 
                     for i in range(n):
@@ -85,6 +89,12 @@ class abfoa2(intelligence.sw):
                         self.__agents[i] += C_a[i] * \
                             np.linalg.norm(dell) * dell
                         J[i] = function(self.__agents[i])
+
+                                                 #Monitor
+                        if(i==n/2):
+                            self.__Steps.append(C_a[i])
+                            self.__JList.append(np.abs(J[i]))
+
                         # Start Swim Steps
                         for m in range(Ns):
 
@@ -100,6 +110,12 @@ class abfoa2(intelligence.sw):
                                 self.__agents[i] += C_a[i] * np.linalg.norm(dell) \
                                     * dell
                                 J[i] = function(self.__agents[i])
+
+                                                         #Monitor
+                                if(i==n/2):
+                                    self.__Steps.append(C_a[i])
+                                    self.__JList.append(np.abs(J[i]))
+
 
                             else:
                                 break
@@ -144,3 +160,9 @@ class abfoa2(intelligence.sw):
         if function(Pbest) < function(Gbest):
             Gbest = Pbest
         self._set_Gbest(Gbest)
+
+    def _get_csteps(self):
+        return self.__Steps
+
+    def _get_jlist(self):
+        return self.__JList

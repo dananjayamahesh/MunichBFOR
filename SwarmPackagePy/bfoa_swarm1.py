@@ -3,7 +3,6 @@ from random import random
 
 from . import intelligence
 
-
 class bfoa_swarm1(intelligence.sw):
     """
     Bacteria Foraging Optimization
@@ -72,6 +71,9 @@ class bfoa_swarm1(intelligence.sw):
         J_cc = sum(T_sum_aa) + sum(T_sum_rr)
         #print (J_cc)
         #J_cost = J_t + J_cc
+
+        if(i==self.N/2):
+            print(J_cc)
         return J_cc
 
 
@@ -103,6 +105,7 @@ class bfoa_swarm1(intelligence.sw):
         self.Wa = Wa
         self.Hr = Hr
         self.Wr = Wr
+        self.N = n
 
         # J = np.array([function(x) for x in self.__agents])
         # Pbest = self.__agents[J.argmin()]
@@ -110,14 +113,18 @@ class bfoa_swarm1(intelligence.sw):
         #iteration = Ned * Nre
 
         #C_list = [C - C * 0.9 * i / iteration for i in range(iteration)]
-        # C_list = [C for i in range(iteration)]
+        #C_list = [C for i in range(iteration)]
         #Ped_list = [Ped - Ped * 0.5 * i / iteration for i in range(iteration)]
 
         #Just for the initialization purposes
         J = np.array([function(x) for x in self.__agents])
+        J_fit = np.array([J[x] for x in range(n)]) #[for p in J] #p
+        #J_fit = J
+        J_cc = np.array([0.0 for x in self.__agents])
         self._points(self.__agents)
         Pbest = self.__agents[J.argmin()]
         Gbest = Pbest
+        J_best = function(Gbest)
 
         #J = [0 for i in range(n)]
         #J_last = J[::1]
@@ -125,17 +132,25 @@ class bfoa_swarm1(intelligence.sw):
         #Gbest = Pbest
         C_a = [C for i in range(n)]
         #self.cell_to_cell_function(self.__agents,1)
+        self.__JFitList = []
+        self.__JCCList = []
+        self.__JARList = []
+        self.__JList = []
+        self.__JBList = []
 
         for l in range(Ned):
             for k in range(Nre):
                 J_chem = [J[::1]]
 
                 J = np.array([function(x) for x in self.__agents])
+                J_fit = np.array([J[x] for x in range(n)]) #[for p in J] #p
                 #print(J)
                 #self._points(self.__agents)
                 Pbest = self.__agents[J.argmin()]
                 if function(Pbest) < function(Gbest):
                     Gbest = Pbest
+                    J_best = function(Gbest)
+
                 J_last = J[::1]
 
                 for j in range(Nc):
@@ -148,17 +163,46 @@ class bfoa_swarm1(intelligence.sw):
                         dell = np.random.uniform(-1, 1, dimension)
                         self.__agents[i] += C_a[i] * \
                             np.linalg.norm(dell) * dell
+                        
+                        J_fit[i] = function(self.__agents[i])
+                        J_cc[i] = self.cell_to_cell_function(self.__agents, i)
+                        J[i] = J_fit[i] + J_cc[i]
 
-                        J[i] = function(self.__agents[i]) + self.cell_to_cell_function(self.__agents, i)
+                        #print(C_a[i], J_fit[i], J_cc[i],J[i], (J_fit[i] + J_ar[i]))
+
+                        #Monitoring
+                        if(i==n/2):
+                            self.__JFitList.append(J_fit[i])
+                            self.__JCCList.append(J_cc[i])
+                            self.__JList.append(J[i])
+                            self.__JBList.append(J_best)
+                            print(C_a[i], J_fit[i], J_cc[i],J[i], (J_fit[i] + J_cc[i]), J_best)
                         # Start Swim Steps
                         for m in range(Ns):
+
+                            if J[i] < J_best:
+                                Gbest = self.__agents[i]
+                                J_best = function(Gbest)  # Check this out
+                                #if(i==n/2):
+                                    #self.__JBList.append(J_best)
 
                             # bacteria moves only when objective function is reduced
                             if J[i] < J_last[i]:
                                 J_last[i] = J[i]
                                 self.__agents[i] += C_a[i] * np.linalg.norm(dell) \
                                     * dell
-                                J[i] = function(self.__agents[i])+ self.cell_to_cell_function(self.__agents, i)
+                                J_fit[i] = function(self.__agents[i])
+                                J_cc[i] = self.cell_to_cell_function(self.__agents, i)
+                                J[i] = J_fit[i] + J_cc[i]
+
+                                #Monitoring
+                                if(i==n/2):
+                                    self.__JFitList.append(J_fit[i])
+                                    self.__JCCList.append(J_cc[i])
+                                    self.__JList.append(J[i])
+                                    self.__JBList.append(J_best)
+                                    print(C_a[i], J_fit[i], J_cc[i],J[i], (J_fit[i] + J_cc[i])), J_best
+                                #J[i] = function(self.__agents[i])+ self.cell_to_cell_function(self.__agents, i)
                             else:
                                 break
                                 # This is not the original algorithm
@@ -174,7 +218,7 @@ class bfoa_swarm1(intelligence.sw):
                 J_chem = np.array(J_chem)
 
                 J_health = [(sum(J_chem[:, i]), i) for i in range(n)]
-
+                print(J_health)
                 # Sorting: Performance#1
                 J_health.sort()
                 alived_agents = []
@@ -202,3 +246,18 @@ class bfoa_swarm1(intelligence.sw):
         if function(Pbest) < function(Gbest):
             Gbest = Pbest
         self._set_Gbest(Gbest)
+
+    def _get_jfits(self):
+        return self.__JFitList
+
+    def _get_jcclist(self):
+        return self.__JCCList   
+
+    def _get_jarlist(self):
+        return self.__JARList     
+
+    def _get_jlist(self):
+        return self.__JList
+
+    def _get_jblist(self):
+        return self.__JBList

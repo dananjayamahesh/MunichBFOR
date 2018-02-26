@@ -80,8 +80,13 @@ from SwarmPackagePy.bfo import bfo
 from SwarmPackagePy.classic_bfo import classic_bfo
 from SwarmPackagePy.bfoa import bfoa
 from SwarmPackagePy.bfoa_swarm1 import bfoa_swarm1
+from SwarmPackagePy.bfoa_swarm2 import bfoa_swarm2
 from SwarmPackagePy.abfoa1 import abfoa1
+from SwarmPackagePy.abfoa1_swarm1 import abfoa1_swarm1
+from SwarmPackagePy.abfoa1_swarm2 import abfoa1_swarm2
 from SwarmPackagePy.abfoa2 import abfoa2
+from SwarmPackagePy.abfoa2_swarm1 import abfoa2_swarm1
+from SwarmPackagePy.abfoa2_swarm2 import abfoa2_swarm2
 from SwarmPackagePy.abfo1 import abfo1
 from SwarmPackagePy.abfo2 import abfo2
 from SwarmPackagePy.bfo_with_swarm import bfo_with_swarm
@@ -102,5 +107,6 @@ from SwarmPackagePy.hs import hs
 from SwarmPackagePy.ssa import ssa
 from SwarmPackagePy.wsa import wsa
 from SwarmPackagePy.animation import animation, animation3D
+from SwarmPackagePy.bfoa_swarm1_dev1_rep import bfoa_swarm1_dev1_rep
 
 _version_ = '1.0.0'

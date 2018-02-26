@@ -8,7 +8,6 @@ class abfoa1(intelligence.sw):
     """
     Bacteria Foraging Optimization
     """
-
     def __init__(self, n, function, lb, ub, dimension, iteration, Nre=16, Ned=4, Nc=2, Ns=12, C=0.1, Ped=0.25, lamda=400):
         """
         :param n: number of agents
@@ -53,6 +52,10 @@ class abfoa1(intelligence.sw):
         #Gbest = Pbest
         C_a = [C for i in range(n)]
 
+        self.__Steps = []
+        self.__JList = []
+        #self.__Steps.append()
+
         for l in range(Ned):
             for k in range(Nre):
                 J_chem = [J[::1]]
@@ -72,19 +75,36 @@ class abfoa1(intelligence.sw):
 
                         # Can move inside
                         dell = np.random.uniform(-1, 1, dimension)
-                        #C_a[i] = 1 / (1 + (lamda / np.abs(J[i])))
+                        C_a[i] = 1 / (1 + (lamda / np.abs(J[i])))
+
+                       
                         self.__agents[i] += C_a[i] * \
                             np.linalg.norm(dell) * dell
                         J[i] = function(self.__agents[i])
+
+                         #Monitor
+                        if(i==n/2):
+                            self.__Steps.append(C_a[i])
+                            self.__JList.append(J[i])
+
                         # Start Swim Steps
                         for m in range(Ns):
 
                             # bacteria moves only when objective function is reduced
                             if J[i] < J_last[i]:
                                 J_last[i] = J[i]
+                                C_a[i] = 1 / (1 + (lamda / np.abs(J[i])))
+
+                                
                                 self.__agents[i] += C_a[i] * np.linalg.norm(dell) \
                                     * dell
                                 J[i] = function(self.__agents[i])
+
+                                #Monitor
+                                if(i==n/2):
+                                    self.__Steps.append(C_a[i])
+                                    self.__JList.append(J[i])
+
                             else:
                                 break
                                 # This is not the original algorithm
@@ -128,3 +148,9 @@ class abfoa1(intelligence.sw):
         if function(Pbest) < function(Gbest):
             Gbest = Pbest
         self._set_Gbest(Gbest)
+
+    def _get_csteps(self):
+        return self.__Steps
+
+    def _get_jlist(self):
+        return self.__JList
