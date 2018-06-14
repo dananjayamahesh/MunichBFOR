@@ -7,6 +7,13 @@ class bfoa_swarm1_dev1_rep(intelligence.sw):
     """
     Bacteria Foraging Optimization
     """
+
+    """
+    UPDATES
+     #1 : Error in Reproduction to CORRECTED
+     alived_fits = 2 * alived_fits[:n // 2] + [alived_fits[n // 2]]
+
+    """
     def cell_to_cell_function(self,agents, i):
         #print('cell-to-cell interactions')
 
@@ -79,8 +86,9 @@ class bfoa_swarm1_dev1_rep(intelligence.sw):
             for k in range(Nre):
 
                 J_chem = [J[::1]]
-                J_last = J[::1]
-                J_fit = np.array(J)            
+                #BUG J_last = J[::1]
+                J_fit = np.array(J)
+                J_last = np.array(J)            
               
                 for j in range(Nc):
 
@@ -167,7 +175,7 @@ class bfoa_swarm1_dev1_rep(intelligence.sw):
                     alived_agents = 2 * \
                         alived_agents[:n // 2] + [alived_agents[n // 2]]
                     self.__agents = np.array(alived_agents)
-                    alived_fits = 2 * alived_fits[:n // 2] + [alived_agents[n // 2]]
+                    alived_fits = 2 * alived_fits[:n // 2] + [alived_fits[n // 2]]
                     J = np.array(alived_fits)
 
             if l < Ned - 2:

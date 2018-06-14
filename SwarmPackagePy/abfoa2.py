@@ -69,7 +69,8 @@ class abfoa2(intelligence.sw):
                     Gbest = Pbest
                     J_best = function(Gbest)
 
-                J_last = J[::1]
+                #BUG J_last = J[::1]
+                J_last = np.array(J)
 
                 for j in range(Nc):
 

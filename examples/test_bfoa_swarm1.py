@@ -16,14 +16,16 @@ import matplotlib.pyplot as plt
 #alh = SwarmPackagePy.bfoa(100, tf.multiple_gaussian_function, -20, 20, 50, 100, 16, 4, 2, 12, 0.1, 0.25, 400 )
 #animation(alh.get_agents(), tf.multiple_gaussian_function, -20, 20)
 #animation3D(alh.get_agents(), tf.multiple_gaussian_function, -20, 20)
-
+r=32
+#f = tf.f2_rosenbrock_function
+f = tf.f3_ackley_function
 
 #alh = SwarmPackagePy.bfoa_swarm1(100, tf.thriple_gaussian_function, -50, 50, 50, 100, 16, 4, 2, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10,400 )
 #GOOD alh = SwarmPackagePy.bfoa_swarm1(100, tf.f2_rosenbrock_function, -100, 100, 30, 100, 16, 4, 2, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10,400 )
 #GOOD alh = SwarmPackagePy.bfoa_swarm1(100, tf.f2_rosenbrock_function, -32, 32, 30, 100, 16, 4, 8, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10,400 )
 #NOT alh = SwarmPackagePy.bfoa_swarm1(100, tf.f3_ackley_function, -32, 32, 30, 100, 16, 4, 2, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10,400 )
 #GOOD alh = SwarmPackagePy.bfoa_swarm1(100, tf.f3_ackley_function, -32, 32, 30, 100, 24, 8, 8, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10,400 )
-alh = SwarmPackagePy.bfoa_swarm1(100, tf.f3_ackley_function, -32, 32, 30, 100, 24, 8, 8, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10,400 )
+alh = SwarmPackagePy.bfoa_swarm1(100, tf.f3_ackley_function, -32, 32, 30, 100, 16, 8, 2, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10,400 )
 
 fits = alh._get_jfits()
 #print(fits)
@@ -56,8 +58,8 @@ plt.show()
 #animation(alh.get_agents(), tf.thriple_gaussian_function, -50, 50)
 #animation3D(alh.get_agents(), tf.thriple_gaussian_function, -50, 50) 
 
-animation(alh.get_agents(), tf.f3_ackley_function, -32, 32)
-animation3D(alh.get_agents(), tf.f3_ackley_function, -32, 32) 
+animation(alh.get_agents(), f, -r, r)
+animation3D(alh.get_agents(), f, -r, r) 
 
 
 #alh = SwarmPackagePy.bfoa_swarm1(100, tf.thriple_wide_gaussian_function, -50, 50, 50, 100, 16, 4, 2, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10,400 )

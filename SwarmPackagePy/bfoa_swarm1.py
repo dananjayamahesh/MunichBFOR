@@ -72,8 +72,8 @@ class bfoa_swarm1(intelligence.sw):
         #print (J_cc)
         #J_cost = J_t + J_cc
 
-        if(i==self.N/2):
-            print(J_cc)
+        #if(i==self.N/2):
+        #    print(J_cc)
         return J_cc
 
 
@@ -131,12 +131,14 @@ class bfoa_swarm1(intelligence.sw):
         #Pbest = self.__agents[0]
         #Gbest = Pbest
         C_a = [C for i in range(n)]
+        self.__Steps = []
         #self.cell_to_cell_function(self.__agents,1)
         self.__JFitList = []
         self.__JCCList = []
         self.__JARList = []
         self.__JList = []
         self.__JBList = []
+
 
         for l in range(Ned):
             for k in range(Nre):
@@ -151,7 +153,9 @@ class bfoa_swarm1(intelligence.sw):
                     Gbest = Pbest
                     J_best = function(Gbest)
 
-                J_last = J[::1]
+                #J_last = J[::1]
+                #BUG1
+                J_last = np.array(J)
 
                 for j in range(Nc):
 
@@ -218,7 +222,7 @@ class bfoa_swarm1(intelligence.sw):
                 J_chem = np.array(J_chem)
 
                 J_health = [(sum(J_chem[:, i]), i) for i in range(n)]
-                print(J_health)
+                #print(J_health)
                 # Sorting: Performance#1
                 J_health.sort()
                 alived_agents = []
@@ -261,3 +265,6 @@ class bfoa_swarm1(intelligence.sw):
 
     def _get_jblist(self):
         return self.__JBList
+
+    def _get_csteps(self):
+        return self.__Steps

@@ -4,7 +4,8 @@ from SwarmPackagePy import animation, animation3D
 import matplotlib.pyplot as plt
 
 #alh = SwarmPackagePy.bfoa_swarm1_dev1_rep(100, tf.f1_sphere_function, -100, 100, 3, 100, 8, 4, 8, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10,10 )
-alh = SwarmPackagePy.bfoa_swarm1_dev1_rep(100, tf.f5_griewank_function, -10, 10, 30, 100, 16, 4, 2, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10,400 )
+#alh = SwarmPackagePy.bfoa_swarm1_dev1_rep(100, tf.f5_griewank_function, -10, 10, 30, 100, 16, 4, 2, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10,400 )
+alh = SwarmPackagePy.bfoa_swarm1_dev1_rep(100, tf.f3_ackley_function, -32, 32, 30, 100, 24, 8, 8, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10,100 )
 
 fits = alh._get_jfits()
 plt.plot(fits, 'b', label='J-fit')
@@ -30,8 +31,8 @@ steps = alh._get_csteps()
 plt.plot(steps)
 plt.show()
 
-animation(alh.get_agents(), tf.f5_griewank_function, -10, 10)
-animation3D(alh.get_agents(), tf.f5_griewank_function, -10, 10)
+animation(alh.get_agents(), tf.f3_ackley_function, -32, 32)
+animation3D(alh.get_agents(), tf.f3_ackley_function, -32, 32)
 
 """"
 alh = SwarmPackagePy.bfoa_swarm1(50, tf.f1_sphere_function, -10, 10, 2, 100, 16, 4, 2, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10,400 )

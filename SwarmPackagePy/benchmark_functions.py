@@ -6,7 +6,7 @@ def f1_sphere_function(x):
 
 def f2_rosenbrock_function(x):
     n = x.shape[0]
-    return sum([(100*((x[i+1]-(x[i]**2))**2) + (x[i]-1)^2) for i in range (n-1)])
+    return sum([(100*((x[i+1]-(x[i]**2))**2) + (x[i]-1)**2) for i in range (n-1)])
 
 
 def ackley_function(x):

@@ -24,11 +24,15 @@ def f3(x):
 def f4(x): 
     return -np.exp(-x *1) + np.exp(-x *10)
 
+def f5(x): 
+    return x*(-np.exp(-x *1) + np.exp(-x *10))
+
 plt.plot(rr, f1(rr), 'b', label='np.exp(-x *10)')
 
 plt.plot(rr, f2(rr), 'r', label='np.exp(-x *1)')
 plt.plot(rr, f3(rr), 'y', label='np.exp(-x *1) - np.exp(-x *10)')
 plt.plot(rr, f4(rr), 'g', label='-np.exp(-x *1) + np.exp(-x *10)')
+plt.plot(rr, f5(rr), 'p', label='Proposed')
 plt.legend()
 plt.show()
 """

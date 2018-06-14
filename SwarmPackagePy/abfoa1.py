@@ -65,7 +65,9 @@ class abfoa1(intelligence.sw):
                 Pbest = self.__agents[J.argmin()]
                 if function(Pbest) < function(Gbest):
                     Gbest = Pbest
-                J_last = J[::1]
+
+                #BUG J_last = J[::1]
+                J_last = np.array(J)
 
                 for j in range(Nc):
 
