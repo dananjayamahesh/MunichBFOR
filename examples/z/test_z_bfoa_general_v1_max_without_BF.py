@@ -4,6 +4,7 @@ from SwarmPackagePy import animation, animation3D,test_function_shape
 import matplotlib.pyplot as plt
 import numpy as np
 import time
+import csv
 
 #import os
 #import system
@@ -119,12 +120,36 @@ lamda = 100
 f = tf.gaussian_diff_multimodal4_positive_max
 
 N = 400
+#D = 20 #Divisions
+
+M = 2
+R = 2
+lrm = 4  # for all r,m, Prmk
+T = 19
+T = T + 1
+Nr = [75, 20]
+r = max(Nr)
+D = 800
+Dimention = M*T
+dim = Dimention
+
 revf = SwarmPackagePy.revenue_optimization_function(M, R , lrm ,T)
-revf.read_paramemeters_file()
-revf.set_parameters(N, M, R , lrm ,T)
+#filename = '../../data/data1.csv'
+filename = '/home/mahesh/paraqum/repos/SwarmPackagePy/data/data2.csv' #ALl numbers
+
+#revf.read_paramemeters_file(filename)
+#read_paramemeters_file(self, filename, Nr, M_=3, R_=2, lrm_=3, T_=2, D = 20 ):
+revf.read_paramemeters_file(filename, Nr, 2, 2, 4, 20, 800) #TTotal
+print("self.N",revf.N)
+print('Press ENTER to continue!')
+input()
+#No Need
+#Set Parameter Commented
+#revf.set_parameters(N, M, R , lrm ,T)
 
 #raw_input("Press Enter to continue ...")
 #pause()
+print('Press ENTER to continue!')
 input()                                 
 
 # f = SwarmPackagePy.revenue_optimization_function.__rev_function
@@ -143,7 +168,10 @@ lb = [0 for i in range(dim)]
 ub = [ r for i in range(dim)]
 
 # alh = SwarmPackagePy.z_bfoa_general_v1_max(100, f, lb, ub, 2, 100, 8, 8, 4, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10, 100, 0.03, 'none', 'none', 'false', 'discrete','max')
-alh = SwarmPackagePy.z_bfoa_general_v1_max(100, f, lb, ub, dim, 100, 8, 8, 4, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10, 100, 0.03, 'none', 'none', 'false', 'discrete','max')
+#alh = SwarmPackagePy.z_bfoa_general_v1_max(100, f, lb, ub, dim, 100, 8, 8, 4, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10, 100, 0.03, 'none', 'none', 'false', 'discrete','max')
+
+#alh = SwarmPackagePy.z_bfoa_general_v1_max(100, f, lb, ub, dim, 100, 8, 16, 4, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10, 100, 0.03, 'none', 'none', 'false', 'discrete','max')
+alh = SwarmPackagePy.z_bfoa_general_v1_max(100, f, lb, ub, dim, 100, 16, 16, 4, 12, 0.1, 0.25, 0.1, 0.2, 0.1, 10, 100, 0.03, 'none', 'none', 'false', 'discrete','max')
 
 print('Maximum Revenue : ',revf.MaxRev)
 print('Optimum Allocation : ',revf.OptAlloc)
