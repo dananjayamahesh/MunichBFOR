@@ -2,6 +2,8 @@
 # MunichBFOR
 **MunichBFOR** is a Library of evolutionary optimization algorithms based on Bacterial Foraging. It includes a class of optimization algorithms and each can be used for solving specific optimization problem. You can find the principles they operate on and pseudo codes  below.<br>
 
+![Alt Text](https://gifs.com/gif/munichbfor-v2-multiniche-sharing-v4-gLoOz9)
+
 Provides:<br>
 - BFO optimization algorithms.
 - Advanced BFO optimization algorithms.
