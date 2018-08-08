@@ -4,6 +4,9 @@
 
 Provides:<br>
 - BFO optimization algorithms.
+- Advanced BFO optimization algorithms.
+- Deep Neural Network Optimizations with MunichBFOR.
+- Non-Convex Revenue Optimization with MunichBFOR.
 - Test functions for BFO algorithms.
 - Animation of minimum find process.<br>
 <br>Every algorithm has arguments listed below:<br>
