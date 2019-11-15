@@ -4,6 +4,8 @@
 
 ![Alt Text](https://gifs.com/gif/munichbfor-v2-multiniche-sharing-v4-gLoOz9)
 
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://www.youtube.com/watch?v=fmaSxDJ3qxg)
+
 Provides:<br>
 - BFO optimization algorithms.
 - Advanced BFO optimization algorithms.
