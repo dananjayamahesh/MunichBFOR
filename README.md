@@ -1,6 +1,9 @@
 
 # MuNic-BFor
-**MuNicBFOr** is a library of evolutionary optimization algorithms based on Bacterial Foraging that was developed as an extension to SwarmPackagePy. It includes a class of optimization algorithms and each can be used for solving specific optimization problem. You can find the principles they operate on and pseudo codes  below. <br>
+**MuNicBFOr** is a library of evolutionary algorithms, specifically Bacterial Foraging, that was developed as an extension to SwarmPackagePy. It includes a class of optimization algorithms and each can be used for solving specific optimization problem. You can find the principles they operate on and pseudo codes  below. <br>
+
+you can also access the presentation here for more details
+https://github.com/dananjayamahesh/MunichBFOR/blob/master/MuNichBFor.pdf
 
 ![Alt Text](https://gifs.com/gif/munichbfor-v2-multiniche-sharing-v4-gLoOz9)
 
